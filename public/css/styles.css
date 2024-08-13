@@ -1,0 +1,112 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Pretendard-Regular', sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+header {
+  background: #ffffff;
+  color: #333;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+header a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav {
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: #007bff;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-size: 1rem;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+  color: #0056b3;
+  border-bottom: 2px solid #007bff;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1.mainText {
+  font-size: 1.5rem;
+  border-right: 4px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typewriter 4s steps(15) 1s both infinite, blackCursor 0.5s steps(15) infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes typewriter {
+  0% { width: 0; }
+  100% { width: 195px; }
+}
+
+@keyframes blackCursor {
+  0% { border-right-color: black; }
+  100% { border-right-color: transparent; }
+}
+
+#posts {
+  margin-top: 2rem;
+}
+
+.post {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.post a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.post a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+footer {
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  color: #666;
+  text-align: center;
+  padding: 1rem;
+  bottom: 0;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write - zuu3'blog</title>
+  <link rel="stylesheet" href="css/write.css">
+</head>
+<body>
+  <header>
+      <h1>zuu3'blog</h1>
+      <nav>
+        <a href="/">홈</a>
+        <a href="/write">글쓰기</a>
+      </nav>
+  </header>
+  <main>
+    <form action="/api/posts" method="POST">
+      <div class="editor-container">
+        <div class="editor-sidebar">
+          <div class="editor">
+            <div id="toolbar">
+              <button type="button" id="bold" title="Bold" class="toolbar-button"><b>B</b></button>
+              <button type="button" id="italic" title="Italic" class="toolbar-button"><i>I</i></button>
+              <button type="button" id="underline" title="Underline" class="toolbar-button"><u>U</u></button>
+              <button type="button" id="heading" title="Heading" class="toolbar-button">H</button>
+              <button type="button" id="link" title="Insert Link" class="toolbar-button">🔗</button>
+              <button type="button" id="image" title="Insert Image" class="toolbar-button">🖼️</button>
+              <button type="button" id="horizontal-line" title="Horizontal Line" class="toolbar-button">—</button>
+              <button type="button" id="highlight" title="Highlight" class="toolbar-button">🖍️</button>
+            </div>
+            <textarea id="content" name="content" placeholder="여기에 포스트 작성..."></textarea>
+            <div class="sidebar">
+              <h3>포스트 세팅</h3>
+              <input id="title" name="title" type="text" placeholder="포스트 제목" required>
+              <!-- <input id="tags" name="tags" type="text" placeholder="Enter tags (comma separated)"> -->
+              <div class="button-group">
+                <!-- <button type="button" id="save" class="button">Save Draft</button> -->
+                <button type="submit" id="publish" class="button button-primary">발행하기</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 미리보기 영역을 분리합니다. -->
+        <div id="preview">
+          <h2>미리보기</h2>
+          <div id="preview-content"></div>
+        </div>
+      </div>
+    </form>
+  </main>
+  <footer>
+    <p>&copy; 2024 zuu3'blog. All rights reserved.</p>
+  </footer>
+
+  <!-- 팝업창 -->
+  <div id="link-popup" class="popup hidden">
+    <div class="popup-content">
+      <button class="popup-close">&times;</button>
+      <h2>링크 삽입</h2>
+      <form id="link-form">
+        <label for="link-url">주소:</label>
+        <input type="url" id="link-url" name="url" placeholder="https://example.com" required>
+        <label for="link-text">텍스트:</label>
+        <input type="text" id="link-text" name="text" placeholder="Link text" required>
+        <button type="submit" class="button">링크 추가</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="image-popup" class="popup hidden">
+    <div class="popup-content">
+      <button class="popup-close">&times;</button>
+      <h2>이미지 삽입</h2>
+      <form id="image-form">
+        <label for="image-url">이미지 주소:</label>
+        <input type="url" id="image-url" name="url" placeholder="https://example.com/image.jpg" required>
+        <label for="image-alt">설명 텍스트:</label>
+        <input type="text" id="image-alt" name="alt" placeholder="Image description" required>
+        <button type="submit" class="button">이미지 추가</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/editor.js"></script>
+</body>
+</html>

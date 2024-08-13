@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>zuu3'blog</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header>
+    <a href="#"><h1>zuu3'blog</h1></a>
+    <nav>
+      <a href="/">홈</a>
+      <a href="/write">글쓰기</a>
+    </nav>
+  </header>
+  <main>
+    <h1 class="mainText">Zuu3 Blog Page</h1>
+    <section id="posts">
+      <p id="postCount">--</p>
+      <!-- Posts will be dynamically inserted here -->
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 zuu3'blog. All rights reserved.</p>
+  </footer>
+  <script>
+    fetch('/api/posts/count')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('postCount').innerText = `총 포스트: ${data.count}`;
+    });
+
+    fetch('/api/posts')
+      .then(response => response.json())
+      .then(posts => {
+        const postsDiv = document.getElementById('posts');
+        posts.forEach(post => {
+          const postElement = document.createElement('div');
+          postElement.classList.add('post');
+          postElement.innerHTML = `
+            <h2><a href="/post/${post.id}">${post.title}</a></h2>
+            <p>${post.content.substring(0, 100)}...</p>
+          `;
+          postsDiv.appendChild(postElement);
+        });
+      });
+  </script>
+</body>
+</html>

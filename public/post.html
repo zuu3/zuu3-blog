@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post - zuu3'blog</title>
+  <link rel="stylesheet" href="/css/post.css">
+</head>
+<body>
+  <header>
+      <a href="index.html"><h1>zuu3'blog</h1></a>
+      <nav>
+        <a href="/">홈</a>
+        <a href="/write">글쓰기</a>
+      </nav>
+  </header>
+  <main>
+    <div class="container">
+      <section id="post">
+      <!-- 여기에 포스트 표시 됨 ㅋ -->
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 zuu3'blog. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    const url = new URL(window.location.href);
+    const postId = url.pathname.split('/').pop();
+
+    fetch(`/api/posts/${postId}`)
+      .then(response => response.json())
+      .then(post => {
+        const postDiv = document.getElementById('post');
+        if (post) {
+          postDiv.innerHTML = `<h2>${post.title}</h2><div>${post.content}</div>`;
+        } else {
+          postDiv.innerHTML = `<p>Post not found</p>`;
+        }
+      });
+  </script>
+</body>
+</html>
